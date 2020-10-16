@@ -1,0 +1,11 @@
+{
+    "name": "michael/teste",
+    "description": "Um teste de rotas",
+    "authors": [
+        {
+            "name": "Michael Top",
+            "email": "michael@email.com"
+        }
+    ],
+    "require": {}
+}

@@ -1,0 +1,94 @@
+<?php
+
+echo "Bem vindo";
+
+
+// Conectando com  o BD usando mysqli
+
+$server   = "localhost";
+$user     = "root";
+$pass     = "123456";
+$database = "BD";
+
+
+@$mysqli = new mysqli($server, $user, $pass, $database); // Com o @ retira a visualização do erro na pagina web
+
+
+// Tratando erro de conexão com if
+
+if(mysqli_connect_errno()){
+    echo "Failed to connect to MYSQL:(" . $mysqli->connect_errno . ") " . $mysqli;
+    exit;
+
+}
+
+
+// Aula 2
+
+$sql = "SELECT * FROM table";
+
+$query = $mysqli->query($sql);
+
+while($data = $query->fetch_assoc()) {
+    echo "Id: " . $data['id'] . "<br>";
+    echo "Nome: " . $data['name'] . "<hr>";
+
+}
+
+//Aula 3
+
+if($query = $mysqli->query($sql)){
+
+/*
+    *Fetch_all
+        Fetch_all:
+            Sintaxe: $query->fetch_all(); (Retorna um array de resltados)
+        Mysqli_NUM
+            Sintaxe: por padrão do fetch_all, já vem com o array numerico.
+        Mysqli_assoc
+            Sintaxe: Array associativo, onde  a chave irá trazer
+            o indice conforme o nome.
+        Mysqli_both
+            Sintaxe: traz ambos acima
+
+    *Fetch_array
+        Fetch_array:
+            Sintaxe: $query->fetch_all(); A diferença é que ele traz tudo em uma linha. Obs: não dá pra utilizad com foreach. Mais utilizado com while.
+        Mysqli_NUM
+        Mysqli_assoc
+        Mysqli_both
+
+    *fetch_row
+        Sintaxe: Usado com fetch_array().
+
+    *fetch_object
+*/
+
+
+//Exemplo de persistência com foreach:
+
+foreach ($user as $value) {
+    echo "id: " . $value['name']; 
+)
+
+
+//Aula 4
+
+/*
+
+Prepare é para dar mais segurança e assim não aceitar alterações maliciosas no banco de dados.
+
+*/
+
+
+$stmt->prepare("SELECT * FROM table WHERE id = ?");
+$stmt->bind_param("i", $id);
+
+
+
+
+
+
+
+
+        
